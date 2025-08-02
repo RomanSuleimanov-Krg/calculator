@@ -12,8 +12,8 @@ namespace calculator
         {
             double firstNumber;
             double secondNumber;
-            string userOpiration;
 
+            string userOpiration = "qwerty";
             bool statusCalculator = true;
 
             while (statusCalculator)
@@ -22,29 +22,38 @@ namespace calculator
                 
                 Console.Write("\nВведите первое число: ");
                 firstNumber = Convert.ToDouble(Console.ReadLine());
-                Console.Write("\nВыберите операцию которую хотите сделать с этим числом: +, -, *, / : ");
-                userOpiration = Console.ReadLine();
                 
-                while (userOpiration != "+" || userOpiration != "-" || userOpiration != "/" || userOpiration != "*")
+                while (userOpiration != "-" & userOpiration != "+" & userOpiration != "/" & userOpiration != "*")
                 {
-                    Console.WriteLine("В калькуляторе нет такой операции!!!");
-                    Console.Write("Выберите операцию которую хотите сделать с этим числом: +, -, *, / : ");
-                    Console.Write("\nЛибо же вы можете выключить калькулятор написав \"Отмена\"");
+                    Console.Write("\nВыберите операцию которую хотите сделать с этим числом: +, -, *, / : ");
                     userOpiration = Console.ReadLine();
-                    if (userOpiration == "Отмена")
-                    {
-                        statusCalculator = false;
-                        break;
-                    }
-                    else if (userOpiration != "+" || userOpiration != "-" || userOpiration != "/" || userOpiration != "*")
+                    if (userOpiration == "-" & userOpiration == "+" & userOpiration == "/" & userOpiration == "*")
                     {
                         break;
                     }
                 }
-                Console.Write($"Введите второе число с которым вы хотите сделать операцию \"{userOpiration}\": ");
+                Console.Write($"\nВведите второе число с которым хотите провести операцию \"{userOpiration}\" : ");
                 secondNumber = Convert.ToDouble(Console.ReadLine());
-                Console.WriteLine($"{firstNumber} {userOpiration} {secondNumber} = {firstNumber + secondNumber}");
-                statusCalculator = false;
+                switch (userOpiration)
+                {
+                    case "+":
+                        Console.WriteLine($"{firstNumber} {userOpiration} {secondNumber} = {firstNumber + secondNumber}");
+                        statusCalculator = false;
+                        break;
+                    case "-":
+                        Console.WriteLine($"{firstNumber} {userOpiration} {secondNumber} = {firstNumber - secondNumber}");
+                        statusCalculator = false;
+                        break;
+                    case "/":
+                        Console.WriteLine($"{firstNumber} {userOpiration} {secondNumber} = {firstNumber / secondNumber}");
+                        statusCalculator = false;
+                        break;
+                    case "*":
+                        Console.WriteLine($"{firstNumber} {userOpiration} {secondNumber} = {firstNumber * secondNumber}");
+                        statusCalculator = false;
+                        break;
+                }
+                
             }
         }
     }
